@@ -22,7 +22,6 @@ firebase.initializeApp({
  const proposalsQuery = proposalsCollection.orderBy('propId')
  
 //  const store = useStore()
-
 //  const paymail = ''
 //  const owner = ''
 
