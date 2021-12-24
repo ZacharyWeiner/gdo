@@ -28,7 +28,6 @@ export function useRun()  {
         await access()
 
     }
-
     const signOut = () => {
         store.dispatch('logout')
     } 

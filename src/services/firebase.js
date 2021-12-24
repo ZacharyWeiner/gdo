@@ -13,6 +13,7 @@ firebase.initializeApp({
     appId: "1:299287965542:web:f773503e58558c17b122a7"
 })
 
+
  const firestore = firebase.firestore()
  const messagesCollection = firestore.collection('messages')
  const messagesQuery = messagesCollection.orderBy('createdAt','desc').limit(100)
