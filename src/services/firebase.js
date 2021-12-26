@@ -39,7 +39,7 @@ firebase.initializeApp({
     })
     onUnmounted(unsubscribe)
     
-    const sendMessage = (text, propId) => {
+    const sendMessage = (text, propId, gopId) => {
         if (!propId) propId = ''
         if (!text.length) return
 
@@ -48,6 +48,7 @@ firebase.initializeApp({
             userId: _owner,
             userPhotoURL: '',
             text: text,
+            gopnikId: gopId,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             propId: propId
         })

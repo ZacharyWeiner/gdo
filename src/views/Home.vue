@@ -1,12 +1,12 @@
 <template>
  
   <div class="pt-20 m-1">
-    <div class="w-full rounded-xl cta flex">
+    <div class="w-full rounded-xl cta flex p-2 ">
       <div class='w-3/4'>
      <h2 class="text-lg md:text-5xl font-bold text-white sm:text-3xl p-5">
-        <span class="block text-black md:pt-12">Your digital passport<br> to the METAVERSE</span>
+        <span class=" text-black md:pt-12">Your digital passport<br> to the METAVERSE</span>
       </h2>
-      <a href="https://relayx.com/market/GOP" class='px-20 py-6 m-2 bg-purple-600 rounded-full text-white font-bold text-2xl ' > Squat with us </a>
+      <a href="https://relayx.com/market/GOP" class='m-2 p-2 text-xl  lg:px-20 lg:py-6 m-2 bg-purple-600 rounded-full text-white font-bold lg:text-2xl ' > Squat with us </a>
     </div>
     <div class='w-1/4'><img class="object-scale-down w-full pr-2" src="../assets/gopnik_cta.png" alt="gopnik"></div>
     </div>
@@ -14,21 +14,24 @@
   </div>
 
   <div class="break1 mt-2"></div>
-    <Proposals />
-    <div class="pb-10 w-full">
-      <button 
-         class="rounded-full px-10 py-4 text-xl font-bold tracking-widest " 
+  <div class='grid xs:grid-cols-3 lg:grid-cols-4'>
+    <div class='col-span-3'>
+      <Proposals />
+        <button 
+          class="p-2 m-2 rounded-full text-xl font-bold tracking-widest " 
         :class="moreProposalsButtonClass"
-         v-on:click="goToProps"   >  
+          v-on:click="goToProps"   >  
         {{moreProposalsButtonText}}
       </button>
     </div>
-  <div class="break2"></div>
-  <div class='flex items-justify-center'>
-    <Messages />
-  </div>
-  <div class="break3"></div>
 
+    <div class='flex-1 col-span-4 lg:col-span-1 p-2 m-2'>
+      <Messages />
+      
+    </div>
+    
+  </div>
+  <div class="break3 pt-10 mb-10"></div>
 </template>
 
 

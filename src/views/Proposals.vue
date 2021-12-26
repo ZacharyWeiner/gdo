@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="w-full about">
     <h1>Proposals</h1>
     <Proposals />
   </div>

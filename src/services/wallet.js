@@ -8,6 +8,7 @@ export function useRun()  {
     const store = useStore() 
 
     const isLogin = computed(() => store.state.relayx_handle !== '' )
+    const canAccess = computed(() => store.state.relayx_handle !== '' && store.state.user_jigs.length > 0 )
 
     const signIn = async () => {
         const token = await window.relayone.authBeta()
@@ -24,8 +25,12 @@ export function useRun()  {
         let _userAddress = res.data
         store.dispatch('login', { _handle, _userAddress } )
         
-        await fetchRun()
-        await access()
+        try{
+            await fetchRun()
+            await setJigs()
+        }catch(err){console.log(err)}
+        
+       
 
     }
     const signOut = () => {
@@ -34,13 +39,15 @@ export function useRun()  {
 
 
     const fetchRun = async () => {
-        run = new Run({trust:"*", owner: store.state.user_address, timeout:100000, networkTimeout:100000}) //, logger: console
+        console.log('Fetch Run Activated... ', store.state.user_address)
+        run = new Run({trust:"*", owner: store.state.user_address, timeout:1000000, networkTimeout:1000000, logger: console}) //, logger: console
         run.activate()
         await run.inventory.sync()
+        console.log('Fetch Run Sync Complete...')
         console.log('Jigs', run.inventory.jigs)
     }
 
-    const access = async () => {
+    const setJigs = async () => {
         const keyContractId = "1ba1080086ca6624851e1fbff18d903047f2b75d3a9ffe5cc8bf49ed0fdb36a0_o2" //Gopnick Class
         const keyContract = await run.load(keyContractId)
         const _userJigs =  run.inventory.jigs.filter(jig => jig instanceof keyContract)
@@ -53,10 +60,8 @@ export function useRun()  {
         }
 
         store.commit('setUserJigs', _userJigs)
-        
     }
-
-    return {signIn, signOut, isLogin}
+    return {signIn, signOut, isLogin, canAccess}
  
 }
 

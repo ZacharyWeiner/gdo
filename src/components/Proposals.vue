@@ -1,61 +1,82 @@
 <template>
-    <div id="proposals" class="w-full xs:flex-1 md:flex mt-10 px-10 justify-center md:flex">
-        
-            <div class="w-auto max-w-xs mb-10 rounded-3xl overflow-hidden text-left shadow-lg bg-white border-solid border-slate-300 m-2"  v-for=" {propId, title, question, photoURL} in proposals"
+    <div id="proposals" class="w-full pt-20 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+            <div class="col-span-1 rounded-3xl overflow-hidden text-left bg-white border-solid border-slate-300 m-2"  v-for=" {propId, title, question, photoURL} in proposals"
             :key="propId"
             :name="propId" >
-            <div class='max-w-1/3'>
-            <img class="w-full object-cover h-48" :src="photoURL" alt="Proposal">
-            <div class="px-6 py-4">
-                <div class="font-bold text-xl mb-2 text-2xl">{{title}}</div>
-                <p class="text-gray-700 text-base">
-                    {{question.substring(0, 200)}}  ... <span class='text-blue-500 cursor-pointer' @click="setProposal(propId)"> see more </span>
-                </p>
-            </div>
+            <div class='flex-1'>
+                <div> 
+                <img class="w-full object-cover h-48" :src="photoURL" alt="Proposal">
+                </div>
+                <div class="px-6 py-4 h-full">
+                    <div class="h-16 overflow-hidden font-bold text-xl mb-2 text-2xl">{{title.length > 48 ? `${title.substring(0, 48)} ...`:  title}}</div>
+                    <p  class="h-36 text-gray-700 text-base">
+                        <span v-if="isLoggedIn">
+                            {{question.substring(0, 200)}}  ... <span class='text-blue-500 cursor-pointer' @click="setProposal(propId)"> see more </span>
+                        </span>
+                        <span v-else> Connect wallet to see the full proposal </span>
+                    </p>
+                </div>
+                <div class=' w-full flex items-baseline '>
+                <div class="w-full m-4 p-4 rounded-xl ring-2 ring-gray-300">
+                    <div class="flex">
+                        <span class="text-xs font-bold pr-1">{{positiveVoteDisplay(propId)}}%</span>
+                        <div class="bg-green-500 h-1" :class="`${voteBarWidth(propId)[0]}`"></div>
+                        <div class="bg-red-500 h-1" :class="`${voteBarWidth(propId)[1]}`"></div>
+                        <span class="text-xs font-bold pl-1">{{negativeVoteDisplay(propId)}}%</span>
+                    </div>
+                    <div class="rounded-lg flex items-center justify-center w-full">
+                        <div v-if="isLoggedIn" class='w-full'>
+                            <div v-if="!hasVote(propId)" class="flex w-full" >
+                                <div class="w-full text-white ">
+                                    <div class="w-full flex items-justify-center">
+                                        <div class='w-full'>
+                                            <button :disabled="!canAccess" class="w-full p-1  m-1 pr-0 mr-0 flex rounded-full rounded-r-none bg-gray-400 font-bold" :class="[canAccess? 'bg-green-400' : 'bg-gray-500' ]" @click="cast(propId,'Yes')">
 
-            <div class="m-4 p-6 rounded-xl ring-2 ring-gray-300">
-                
-            <div class="flex">
-                <span class="text-xs font-bold pr-1">{{positiveVoteDisplay(propId)}}%</span>
-                <div class="bg-green-500 h-1" :class="`${voteBarWidth(propId)[0]}`"></div>
-                <div class="bg-red-500 h-1" :class="`${voteBarWidth(propId)[1]}`"></div>
-                <span class="text-xs font-bold pl-1">{{negativeVoteDisplay(propId)}}%</span>
-            </div>
-            <div class="px-8 py-10 rounded-lg flex items-center justify-center ">
-                <div v-if="isLoggedIn">
-                    <div v-if="!hasVote(propId)" class="flex" >
-                        <div class="text text-white flex">
-                            <div class="">
-                                <button class=" ring-1 ring-green-500 flex rounded-full bg-gray-400 font-bold py-2 px-4 m-1 mr-3" @click="cast(propId,'Yes')">
-                                    <div class=" flex items-justify-center">
-                                    <img class="h-5 pr-2 " src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-up_1f44d.png"/> 
-                                    <div class="">Vote with</div>
+                                                <div class='p-1 m-1 flex '>
+                                                    <div class='pl-6'> 
+                                                        <img class="h-5 pr-2 " src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-up_1f44d.png"/> 
+                                                    </div>
+                                                    <div class="text-xs break-none pt-1 ">Vote with </div>
+                                                </div>
+                                                
+                                            </button>
+                                        </div>
+                                         <div  class='w-full'>
+                                        <button :disabled="!canAccess" class="w-full  p-1 m-1 pl-0 ml-0 flex rounded-full rounded-l-none bg-gray-400 font-bold" :class="[canAccess? 'bg-red-400' : 'bg-gray-500 border-l-2' ]" @click="cast(propId,'No')">
+                                             <div class='w-full p-1 m-1 flex items-justify-center'>
+                                                 <div class='pl-6'> 
+                                                    <img class="h-5 pr-2" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-down_1f44e.png"/> 
+                                                 </div>
+                                                 <div class="text-xs break-none pt-1">Vote against </div>
+                                             </div>
+                                        </button> 
+                                        </div>
                                     </div>
-                                </button>
+                                    <div class="flex items-justify-center">
+                                       
+                                    </div>
+                                </div>
                             </div>
-                            <div class="">
-                                <button class=" ring-1 ring-red-500 flex rounded-full bg-gray-400 font-bold py-2 px-4 m-1" @click="cast(propId,'No')">
-                                    <div class=" flex items-justify-center">
-                                        <img class="h-5 pr-2 " src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-down_1f44e.png"/> 
-                                        <div class="">Vote against</div>
+                            <div v-else id="votes" v-for=" vote in votes "
+                            :key="vote.id">
+
+                                <div class='w-full flex' v-if="vote.propId === propId">
+                                     <div class=" flex items-justify-center">
+                                        <button class="p-1 m-1 ring-1 ring-red-500 flex rounded-full bg-gray-400 font-bold" :class="`${vote.vote === 'Yes'? 'bg-green-400': 'bg-red-500'}`">
+                                            <img class="h-5 pr-2 " :src="vote.vote === 'Yes'? 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-up_1f44d.png' : 'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/thumbs-down_1f44e.png' "/> 
+                                            <div class="text-sm text-white">Voted: {{vote.vote}}</div>
+                                        </button> 
                                     </div>
-                                </button> 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div v-else id="votes" v-for=" vote in votes "
-                    :key="vote.id">
-                        <div v-if="vote.propId === propId">
-                            <span class="rounded-full bg-gray-400 font-bold py-2 px-4 text-white"> You voted :  {{vote.vote}} </span>
+                        <div v-else class='w-full text-center'>
+                            <button class="w-full flex rounded-full bg-white-400 font-bold py-2 px-4 m-1 mr-3 ring-4 ring-black font-bold"> <div class='w-full text-center'>  Connect wallet to see more </div> </button>
                         </div>
+                    
                     </div>
                 </div>
-                <div v-else class='w-full text-center'>
-                     <button class="w-full flex rounded-full bg-white-400 font-bold py-2 px-4 m-1 mr-3 ring-4 ring-black font-bold"> <div class='w-full text-center'>  Connect wallet to see more </div> </button>
                 </div>
-               
-            </div>
-            </div>
             </div>
         </div>
     </div>
@@ -65,12 +86,14 @@
 <script>
 import { useProposals, getVotes, getAllVotes } from './../services/firebase'
 import { useStore } from 'vuex'
+import {useRun} from './../services/wallet'
 // import PropoposalVoteBar from './PropoposalVoteBar.vue'
 
 export default {
     components:{},
      setup() {
         const store = useStore()
+        let {canAccess} = useRun();
         const { proposals, sendVote } = useProposals(store.state.relayx_handle, store.state.user_address)
         const cast = (propId,vote) => {
             sendVote(propId,vote)  
@@ -80,7 +103,7 @@ export default {
         const { votes } =  getVotes(store.state.user_address)
         const allVotes  = getAllVotes()
         console.log('proposals', proposals)
-        return { proposals, cast, votes, allVotes }
+        return { proposals, cast, votes, allVotes, canAccess }
 
     }, 
     methods:{
