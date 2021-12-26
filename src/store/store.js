@@ -13,7 +13,8 @@ export default createStore({
     relayx_handle: '',
     user_address: '',
     user_jigs: [],
-    selected_proposalId: ''
+    selected_proposalId: '',
+    gopnikId: ''
 
   },
   mutations: {
@@ -29,6 +30,9 @@ export default createStore({
     },
     setSelectedProposalId(state, _propId) {
       state.selected_proposalId = _propId
+    },
+    setGopnikId(state, id){
+      state.gopnikId = id;
     }
     
   },

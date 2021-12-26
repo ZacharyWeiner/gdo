@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full about">
-    <h1>Proposals</h1>
+  <div class="w-full ">
+    
     <Proposals />
   </div>
 </template>

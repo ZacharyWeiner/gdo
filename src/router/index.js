@@ -32,6 +32,11 @@ const routes = [
     path: '/send-prop',
     name: 'Send-Proposal',
     component: () => import( '../views/NewProposalForm.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import( '../views/Profile.vue')
   }
 ]
 

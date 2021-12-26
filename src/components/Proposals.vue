@@ -1,13 +1,14 @@
 <template>
-    <div id="proposals" class="w-full pt-20 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+    <h1 class="font-bold pt-3 pb-4 text-2xl text-white uppercase tracking-2xl" >Proposals</h1>
+    <div id="proposals" class="w-full  grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             <div class="col-span-1 rounded-3xl overflow-hidden text-left bg-white border-solid border-slate-300 m-2"  v-for=" {propId, title, question, photoURL} in proposals"
             :key="propId"
             :name="propId" >
-            <div class='flex-1' @click="setProposal(propId)">
-                <div> 
+            <div class='flex-1' >
+                <div @click="setProposal(propId)"> 
                 <img class="w-full object-cover h-48" :src="photoURL" alt="Proposal">
                 </div>
-                <div class="px-6 py-4 h-full">
+                <div @click="setProposal(propId)" class="px-6 py-4 h-full">
                     <div class="h-16 overflow-hidden font-bold text-xl mb-2 text-2xl">{{title.length > 48 ? `${title.substring(0, 48)} ...`:  title}}</div>
                     <p  class="h-36 text-gray-700 text-base">
                         <span v-if="isLoggedIn">

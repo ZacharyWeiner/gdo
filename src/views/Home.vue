@@ -13,7 +13,7 @@
     
   </div>
 
-  <div class="break1 mt-2"></div>
+  <div class="break1 mt-8"></div>
   <div class='grid xs:grid-cols-3 lg:grid-cols-4'>
     <div class='col-span-3'>
       <Proposals />

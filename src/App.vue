@@ -1,6 +1,6 @@
 <template>
   <Nav />
-
+<div class='w-full bg-white h-6 mt-4'> Powered by: <span class='text-green-500'> Metadesk</span> Design by: <span class='text-blue-500'> Crumbs </span></div>
 </template>
 
 <script>

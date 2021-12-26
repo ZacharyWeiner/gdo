@@ -60,6 +60,9 @@ export function useRun()  {
         }
 
         store.commit('setUserJigs', _userJigs)
+        if(store.state.gopnikId === ''){
+            store.commit('setGopnikId', _userJigs[0].no)
+        }
     }
     return {signIn, signOut, isLogin, canAccess}
  

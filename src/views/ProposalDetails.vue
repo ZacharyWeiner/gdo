@@ -1,7 +1,7 @@
 <template>
-  <div id="ProposalDetail " class="w-4xl xs:flex-1 md:flex mt-10 px-10 justify-center mt-40">
+  <div id="ProposalDetail " class="max-w-4xl mx-auto xs:flex-1 mt-10 px-10 justify-center mt-40">
     <div>
-      <div v-on:click="$(this.$router.push('/'))" class="text-left mb-10"> 
+      <div v-on:click="goBack()" class="text-left mb-10"> 
         <button class="font-bold px-6 py-3 border-4 border-white text-white rounded-lg"> Back</button>
       </div>
       <div class="">
@@ -37,11 +37,11 @@
           </div>
         </div>
       </div>
-      <div class="propchat">
+      <div class="propchat pt-6 pb-6">
             <Messages />
       </div>
       <div class="break2"></div>
-      <div class="w-full ">
+      <div class="w-full">
         <Messages :isTrollbox="true" />
     </div>
     </div>
@@ -76,10 +76,18 @@ export default {
 
 
   },
+  methods:{
+    goBack(){
+      this.$router.push('/');
+    }
+  },
   computed: {
     ...mapState(['selected_proposalId']),
     
     selectedProposal() {
+      if(this.proposals.length === 0){
+        return {propsal: {title: '', photoURL: '', proposedBy: ['', ''], createdOn: '',endsOn: '', question: '' }}
+      }
       let sp = this.proposals.filter(p => p.propId === this.$store.state.selected_proposalId)[0]
       console.log(sp)
       return sp;

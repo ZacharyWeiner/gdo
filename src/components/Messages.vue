@@ -5,8 +5,8 @@
                 <img class="h-5 pr-2" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/loudly-crying-face_1f62d.png">
                 <div class="font-bold text-2xl text-white uppercase tracking-2xl">{{getChatTitle}}</div>
             </div>
-           <div class="rounded-xl ring-2 ring-gray-300 ">
-               <div class="overflow-auto min-h-96 max-h-128 p-2 m-2">
+           <div class="h-full justify-end rounded-xl ring-2 ring-gray-300 ">
+               <div class="overflow-y-scroll justify-end max-h-96 p-2 m-2">
                    <Message
                     v-for="{ id, text, userName, userId, gopnikId } in filteredMessages"
                     class=''
@@ -69,7 +69,7 @@ export default {
         const message = ref('')
         const send = (propCode) => {
             if(store.state.relayx_handle !== ""){
-                sendMessage(message.value, propCode, store.state.user_jigs[0].no)
+                sendMessage(message.value, propCode, store.state.gopnikId)
                 message.value = ''
                 bottom.value?.scrollIntoView({ behavior: 'smooth' })
             } else{
