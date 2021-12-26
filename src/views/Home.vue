@@ -26,7 +26,7 @@
     </div>
 
     <div class='flex-1 col-span-4 lg:col-span-1 p-2 m-2'>
-      <Messages />
+      <Messages :isTrollbox="true"/>
       
     </div>
     

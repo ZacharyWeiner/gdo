@@ -1,7 +1,7 @@
 <template>
   <div id="ProposalDetail " class="w-4xl xs:flex-1 md:flex mt-10 px-10 justify-center mt-40">
     <div>
-      <div v-on:click="$(this.$router.push('/props'))" class="text-left mb-10"> 
+      <div v-on:click="$(this.$router.push('/'))" class="text-left mb-10"> 
         <button class="font-bold px-6 py-3 border-4 border-white text-white rounded-lg"> Back</button>
       </div>
       <div class="">

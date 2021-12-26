@@ -3,7 +3,7 @@
             <div class="col-span-1 rounded-3xl overflow-hidden text-left bg-white border-solid border-slate-300 m-2"  v-for=" {propId, title, question, photoURL} in proposals"
             :key="propId"
             :name="propId" >
-            <div class='flex-1'>
+            <div class='flex-1' @click="setProposal(propId)">
                 <div> 
                 <img class="w-full object-cover h-48" :src="photoURL" alt="Proposal">
                 </div>
