@@ -1,7 +1,7 @@
 <template>
  
-  <div class="pt-20 m-1">
-    <div class="w-full rounded-xl cta flex p-2 ">
+  <div class="pt-20 m-1 rounded-xl">
+    <!-- <div class="w-full rounded-xl cta flex p-2 ">
       <div class='w-3/4'>
      <h2 class="text-lg md:text-5xl font-bold text-white sm:text-3xl p-5">
         <span class=" text-black md:pt-12">Your digital passport<br> to the METAVERSE</span>
@@ -9,8 +9,9 @@
       <a href="https://relayx.com/market/GOP" class='m-2 p-2 text-xl  lg:px-20 lg:py-6 m-2 bg-purple-600 rounded-full text-white font-bold lg:text-2xl ' > Squat with us </a>
     </div>
     <div class='w-1/4'><img class="object-scale-down w-full pr-2" src="../assets/gopnik_cta.png" alt="gopnik"></div>
-    </div>
+    </div> -->
     
+    <img class='object-cover w-full max-h-96 rounded-xl' src="https://pewparty.com/wp-content/uploads/2021/12/GopDaoHeader.png" />
   </div>
 
   <div class="break1 mt-8"></div>

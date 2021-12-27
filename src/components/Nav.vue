@@ -8,13 +8,49 @@
                     <img class="block h-14 pr-2 w-auto" src="../assets/logo.png" alt="DAO">
                     </router-link>
                 </div>
-                <div @click='navigateToRelay()' class='flex ring-gray-300 ring-1 rounded-xl max-w-sm'>
+                <div @click='navigateToRelay()' class='flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
                     <div class='pt-0.5'> 
-                        <img class='h-6 w-6 rounded-full my-4 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/180.jpeg" />
+                        <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/180.jpeg" />
                     </div>
                     <div class='text-white text-xs pt-3 px-1'>
                         <div> #1212 </div>
                         <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 3.33 </span></div>
+                    </div>
+                </div>
+                <div @click='navigateToRelay()' class='flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                    <div class='pt-0.5'> 
+                        <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/834.jpeg" />
+                    </div>
+                    <div class='text-white text-xs pt-3 px-1'>
+                        <div> #834 </div>
+                        <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 1.88 </span></div>
+                    </div>
+                </div>
+                <div @click='navigateToRelay()' class='hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                    <div class='pt-0.5'> 
+                        <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/1765.jpeg" />
+                    </div>
+                    <div class='text-white text-xs pt-3 px-1'>
+                        <div> #1765 </div>
+                        <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 2.62 </span></div>
+                    </div>
+                </div>
+                <div @click='navigateToRelay()' class=' hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2 '>
+                    <div class='pt-0.5'> 
+                        <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/371.jpeg" />
+                    </div>
+                    <div class='text-white text-xs pt-3 px-1'>
+                        <div> #371 </div>
+                        <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 4.20 </span></div>
+                    </div>
+                </div>
+                <div @click='navigateToRelay()' class='hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                    <div class='pt-0.5'> 
+                        <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/2238.jpeg" />
+                    </div>
+                    <div class='text-white text-xs pt-3 px-1'>
+                        <div> #2238 </div>
+                        <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 3.11 </span></div>
                     </div>
                 </div>
                 <!-- <router-link to="/">Home</router-link> |
