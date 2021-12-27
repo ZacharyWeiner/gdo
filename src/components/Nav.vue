@@ -76,7 +76,7 @@ export default {
     computed:{
     imageSource(){
         if(!this.$store.state.user_jigs || this.$store.state.user_jigs.length === 0){return defaultGopnik}
-        else {console.log(this.$store.state.user_jigs[0].no); return defaultGopnik}// 'https://pewparty.com/wp-content/uploads/2021/12/' + this.$store.state.user_jigs[0].no + '.jpeg';}
+        else {console.log(this.$store.state.user_jigs[0].props.no); return defaultGopnik}// 'https://pewparty.com/wp-content/uploads/2021/12/' + this.$store.state.user_jigs[0].no + '.jpeg';}
     },
     ...mapState(['relayx_handle', 'user_address'])
   },

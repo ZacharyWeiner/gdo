@@ -5,10 +5,10 @@
                 :class="`${store.state.gopnikId === jig.no ?  'ring-teal-300' : ''}`"
                 @click="setGopnikId(jig.no)">
             <div class="text-white "> 
-                <img class='h-10 w-10 rounded-full' :src="`${'https://pewparty.com/wp-content/uploads/2021/12/' + jig.no + '.jpeg'}`" />
+                <img class='h-10 w-10 rounded-full' :src="`${'https://pewparty.com/wp-content/uploads/2021/12/' + jig.props.no + '.jpeg'}`" />
             </div>
             <div class="text-white text-center p-2 "> 
-                Gopniks Number: {{jig.no}}
+                Gopniks Number: {{jig.props.no}}
             </div>
         </div>
     </div>
