@@ -16,7 +16,7 @@
 
       <div class="rounded-3xl bg-gray-100 p-6 mt-20 ">
         <div class="text-black">
-          {{selectedProposal? selectedProposal.question : ""}}
+          {{selectedProposalQuestionText}}
         </div>
         <div class="text-left mt-6 ">
           <div class="font-bold mb-2">Proposed by</div>
@@ -52,6 +52,7 @@
 import { mapState } from 'vuex'
 import { useProposals, getVotes, getAllVotes } from './../services/firebase'
 import { useStore } from 'vuex'
+import { useRun } from './../services/wallet'
 import Messages from '@/components/Messages.vue'
 
 export default {
@@ -61,6 +62,7 @@ export default {
   },
   setup() {
     const store = useStore()
+    const {canAccess} = useRun();
     const { proposals, sendVote } = useProposals(store.state.relayx_handle, store.state.user_address)
     const cast = (propId,vote) => {
         sendVote(propId,vote)  
@@ -72,7 +74,7 @@ export default {
     const { votes } =  getVotes(store.state.user_address)
     const allVotes  = getAllVotes()
   
-    return { proposals, cast, votes, allVotes }  
+    return { proposals, cast, votes, allVotes, canAccess }  
 
 
   },
@@ -100,6 +102,12 @@ export default {
       let sp = this.proposals.filter(p => p.propId === this.$store.state.selected_proposalId)[0]
       console.log(sp)
       return sp;
+    },
+    selectedProposalQuestionText(){
+      if(!this.canAccess){
+        return "Connect wallet to see the proposal details..." 
+      }
+      return this.selectedProposal.question;
     }
     
     

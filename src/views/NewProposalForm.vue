@@ -1,6 +1,6 @@
 <template>
-
-    <div class="pt-20 m-1 text-white text-left text-2xl font-bold">
+<div class='max-w-2xl mx-auto'>
+    <div class="pt-20 m-1 text-white text-left text-2xl font-bold text-center">
         Submit New Proposal
     </div>
 
@@ -95,6 +95,7 @@
             </div>
         </div>
     </form>
+</div>
 </template>
 
 <script>
@@ -161,8 +162,9 @@ export default {
 
     },
     mounted(){
-        if(approved.indexOf(this.$store.state.relayx_handle) !== -1){
-            alert('You shouldnt be here.')
+        if(approved.indexOf(this.$store.state.relayx_handle) === -1){
+            alert('You need to be whitelisted to add a proposal while we are in beta. Please reach out to @Gopnikz to be added.')
+            this.$router.push('/')
         }
     }
 

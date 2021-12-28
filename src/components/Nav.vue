@@ -3,6 +3,13 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-2">
         <div class="relative flex items-center justify-between h-16">
             <div class="flex items-stretch sm:justify-start">
+                 <div class="flex items-justify-center">
+                     <div  class='w-12 h-12 pt-2 mr-2'> 
+                    <router-link to="/send-prop">
+                        <div class="w-full rounded-full bg-white text-center text-ingigo-600 p-3" alt="DAO"> + </div>
+                    </router-link>
+                     </div>
+                </div>
                 <div class="flex-shrink-0 ">
                     <router-link to="/">
                     <img class="block h-14 pr-2 w-auto" src="../assets/logo.png" alt="DAO">
