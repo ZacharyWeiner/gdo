@@ -3,13 +3,6 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 mt-2">
         <div class="relative flex items-center justify-between h-16">
             <div class="flex items-stretch sm:justify-start">
-                 <div class="flex items-justify-center">
-                     <div  class='w-12 h-12 pt-2 mr-2'> 
-                    <router-link to="/send-prop">
-                        <div class="w-full rounded-full bg-white text-center text-ingigo-600 p-3" alt="DAO"> + </div>
-                    </router-link>
-                     </div>
-                </div>
                 <div class="flex-shrink-0 ">
                     <router-link to="/">
                     <img class="block h-14 pr-2 w-auto" src="../assets/logo.png" alt="DAO">
@@ -24,7 +17,7 @@
                         <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 3.33 </span></div>
                     </div>
                 </div>
-                <div @click='navigateToRelay()' class='flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                <div @click='navigateToRelay()' class='hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
                     <div class='pt-0.5'> 
                         <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/834.jpeg" />
                     </div>
@@ -33,7 +26,7 @@
                         <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 1.88 </span></div>
                     </div>
                 </div>
-                <div @click='navigateToRelay()' class='hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                <div @click='navigateToRelay()' class='hidden md:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
                     <div class='pt-0.5'> 
                         <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/1765.jpeg" />
                     </div>
@@ -42,7 +35,7 @@
                         <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 2.62 </span></div>
                     </div>
                 </div>
-                <div @click='navigateToRelay()' class=' hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2 '>
+                <div @click='navigateToRelay()' class=' hidden lg:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2 '>
                     <div class='pt-0.5'> 
                         <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/371.jpeg" />
                     </div>
@@ -51,7 +44,7 @@
                         <div> <span class='bg-yellow-400 text-yellow-400 text-xs rounded-full'>.....</span> <span class='text-green-400'> 4.20 </span></div>
                     </div>
                 </div>
-                <div @click='navigateToRelay()' class='hidden sm:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
+                <div @click='navigateToRelay()' class='hidden lg:flex ring-gray-300 ring-1 rounded-xl max-w-sm mx-2'>
                     <div class='pt-0.5'> 
                         <img class='h-6 w-6 rounded-full my-3 mx-2' src="https://pewparty.com/wp-content/uploads/2021/12/2238.jpeg" />
                     </div>
@@ -68,6 +61,13 @@
             
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div v-if="isLoggingIn" class="w-auto text-white">Searching For Your GOPS ...</div>
+                <div v-else class="flex items-justify-center">
+                     <div  class='w-12 h-12  mr-2'> 
+                    <router-link to="/send-prop">
+                        <div class="w-full text-5xl font-extrabold rounded-full bg-white text-center" alt="DAO"> + </div>
+                    </router-link>
+                     </div>
+                </div>
                 <div class="ml-3 relative">
                     <div>
                         <span v-if="isLoggingIn" class='fa fa-spinner' >!</span> 
