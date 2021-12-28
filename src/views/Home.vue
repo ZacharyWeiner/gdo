@@ -11,8 +11,8 @@
     <div class='w-1/4'><img class="object-scale-down w-full pr-2" src="../assets/gopnik_cta.png" alt="gopnik"></div>
     </div> -->
     
-    <img class='hidden md:inline md:object-cover md:w-full md:max-h-96 md:rounded-xl ' src="https://pewparty.com/wp-content/uploads/2021/12/GopHead2Thin.png" />
-    <img class='object-cover w-full max-h-96 rounded-xl xs:inline md:hidden' src="https://pewparty.com/wp-content/uploads/2021/12/GopHead2.png" />
+    <img @click="navigateTo('https://gopnikz.info')" class='hidden md:inline md:object-cover md:w-full md:max-h-96 md:rounded-xl ' src="https://pewparty.com/wp-content/uploads/2021/12/GopHead2Thin.png" />
+    <img @click="navigateTo('https://gopnikz.info')" class='object-cover w-full max-h-96 rounded-xl xs:inline md:hidden' src="https://pewparty.com/wp-content/uploads/2021/12/GopHead2.png" />
   </div>
 
   <div class="break1 mt-8"></div>
@@ -71,6 +71,9 @@ export default {
   methods: {
     goToProps() {
       this.$router.push('/props')
+    },
+    navigateTo(url){
+       window.location.href = url;
     }
   }
 }
