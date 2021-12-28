@@ -10,7 +10,7 @@
       </div>
       
       <div class="flex justify-center text-white mt-4">
-        <span class="w-1/2">Posted Date: {{selectedProposal.createdOn}} </span>
+        <span class="w-1/2">Posted Date: {{postedDate}} </span>
         <span class="w-1/2">Voting {{selectedProposal.endsOn}}</span>
       </div>
 
@@ -83,7 +83,16 @@ export default {
   },
   computed: {
     ...mapState(['selected_proposalId']),
-    
+    postedDate(){
+      try{
+         let date = new Date(this.selectedProposal.createdOn.seconds * 1000);
+         return date.toDateString()
+      }catch(err){
+        console.log(err)
+      }
+      return '';
+      
+    },
     selectedProposal() {
       if(this.proposals.length === 0){
         return {propsal: {title: '', photoURL: '', proposedBy: ['', ''], createdOn: '',endsOn: '', question: '' }}
