@@ -1,9 +1,14 @@
 <template>
     <div class='pt-20 min-h-screen'>
         <div class='text-white'>Profile </div>
-        <!-- <button @click="doStuff" class='text-white ring-1 ring-gray-500' > Do Stuff </button> -->
+        <button @click="doStuff()" class='text-white ring-1 ring-gray-500' > Do Stuff </button>
         <jig-list></jig-list>
-        <div class='h-full'></div>
+        <div v-if="last_offers">
+        <div class='text-white' v-for="order in last_offers" :key="order.id">
+            {{order}}
+        </div>
+        </div>
+        
     </div>
 </template>
 
@@ -11,6 +16,7 @@
 import { reactive, toRefs } from 'vue'
 import JigList from '../components/JigList.vue'
 import {useFetchOrders} from './../services/RunData'
+import {mapState} from 'vuex'
 export default {
   components: { JigList },
     setup () {
@@ -26,9 +32,11 @@ export default {
     },
     methods:{
         async doStuff(){
-            let response = await this.getOpenOrders()
-            console.log(response)
+            await this.getOpenOrders(this.$store)
         }
+    },
+    computed:{
+        ...mapState(['last_offers'])
     }
 }
 </script>

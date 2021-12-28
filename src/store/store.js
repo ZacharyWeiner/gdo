@@ -14,7 +14,9 @@ export default createStore({
     user_address: '',
     user_jigs: [],
     selected_proposalId: '',
-    gopnikId: ''
+    gopnikId: '', 
+    last_offers: [],
+    last_offers_last_checked: ''
 
   },
   mutations: {
@@ -33,8 +35,13 @@ export default createStore({
     },
     setGopnikId(state, id){
       state.gopnikId = id;
+    },
+    setLastOffers(state, offers){
+      state.last_offers = offers
+    },
+    setLastOffersLastChecked(state, time){
+      state.last_offers_last_checked = time;
     }
-    
   },
   actions: {
     // call multiple mutation routines
